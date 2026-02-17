@@ -17,6 +17,7 @@ class _OnboardingViewState extends State<OnboardingView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("Halaman Onboarding"),
             Text("Step: $step"),
             IconButton(
                 onPressed: () {
@@ -30,7 +31,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                     }
                   });
                 },
-                icon: Icon(Icons.plus_one))
+                icon: Text("Lanjut"))
           ],
         ),
       ),
