@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:logbook_app_081/features/auth/login_view.dart';
 import 'package:logbook_app_081/features/onboarding/onboarding_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isDone = prefs.getBool('is_onboarding_done') ?? false;
+  runApp(MaterialApp(
+    home: isDone ? const LoginView() : const OnboardingView(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
