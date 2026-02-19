@@ -27,6 +27,19 @@ class _CounterViewState extends State<CounterView> {
     }
   }
 
+  String _getGreeting() {
+    var hour = DateTime.now().hour;
+    if (hour >= 6 && hour < 11) {
+      return "Selamat Pagi";
+    } else if (hour >= 11 && hour < 15) {
+      return "Selamat Siang";
+    } else if (hour >= 15 && hour < 18) {
+      return "Selamat Sore";
+    } else {
+      return "Selamat Malam";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +86,8 @@ class _CounterViewState extends State<CounterView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Selamat datang ${widget.username}"),
+            Text("${_getGreeting()}, ${widget.username}",
+                style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 10),
             const Text(
               'Total Hitungan',
